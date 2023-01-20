@@ -59,7 +59,7 @@ controller.getPost = async (req, res) => {
 
       //store post data detail
       const post_detail = [];
-      for (let i = 0; i < postlength + 1; i++) {
+      for (let i = 0; i < postlength; i++) {
         if (results[i]) {
           post_detail.push({
             post_id: results[i].data[0].id,
@@ -89,7 +89,7 @@ controller.getPost = async (req, res) => {
       //sort desc based on total of number comment
       const sort_from_top_post = postdetail_with_length
         .slice()
-        .sort((a, b) => b.post_id_length - a.post_id_length);
+        .sort((a, b) => b.total_number_of_comments - a.total_number_of_comments);
 
       //api response final data
       res.send({
